@@ -1,34 +1,34 @@
-const path = require('path');
-const webpack = require('webpack');
-
-const APP_DIR = path.resolve(__dirname, './index.js');
+var path = require('path');
+var webpack = require('webpack');
+const htmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
-  // devtool: 'eval-source-map',// 这是个啥https://segmentfault.com/a/1190000004280859
-  devServer: {  //这里配置webpack-dev-server
-    publicPath: '/dist/'
-    //这里还可以加入其它你需要的参数
-  },
+  devtool: 'cheap-module-eval-source-map',
   entry: [
-    './index'
+    'webpack-hot-middleware/client',
+    './src/index'
   ],
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
     publicPath: '/dist/'
   },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new htmlWebpackPlugin({
+			filename: 'index.html',
+			template: 'index.html',
+			inject: false
+		})
+  ],
   module: {
-    rules: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: [
-          {
-            loader: "babel-loader",
-            options: {
-            }
-          }
-        ],
-      }
-    ]
+    loaders: [{
+      test: /\.js$/,
+      loaders: ['react-hot', 'babel'],
+      exclude: /node_modules/
+    }, {
+      test: /\.scss$/,
+      loaders: ['style', 'css', 'sass'],
+      exclude: /node_modules/
+    }]
   }
-}
+};

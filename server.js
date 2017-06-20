@@ -1,13 +1,25 @@
-const webpack = require('webpack')
-const WebpackDeveServer = require('webpack-dev-server')
-const config = require('./webpack.config.js')
-const server = new WebpackDeveServer(webpack(config), {
-  publicPath: config.output.publicPath
-})
+var path = require('path');
+var webpack = require('webpack');
+var express = require('express');
+var config = require('./webpack.config');
 
-server.listen(3000, 'localhost', function(err, result) {
+var app = express();
+var compiler = webpack(config);
+
+app.use(require('webpack-dev-middleware')(compiler, {
+  publicPath: config.output.publicPath
+}));
+
+app.use(require('webpack-hot-middleware')(compiler));
+
+app.get('*', function(req, res) {
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
+
+app.listen(3000, function(err) {
   if (err) {
-    return console.log(err)
+    return console.error(err);
   }
-  return console.log('listening at localhost: 3000....')
-})
+
+  console.log('Listening at http://localhost:3000/');
+});
