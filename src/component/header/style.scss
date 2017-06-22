@@ -1,0 +1,32 @@
+@import '../../sass/variate';
+
+.top-container {
+	background: $jet-black;
+	height: 40px;
+	
+	.top-inner {
+		height: 100%;
+		width: 60%;
+		margin: 0px auto;
+		line-height: 40px;
+
+		.top-inner-left {
+			height: 100%;
+			float: left;
+
+			span {
+				color: $font-gray
+			}
+		}
+		.top-inner-right {
+			float: right;
+			a {
+				text-decoration: none!important;
+				color: $font-gray;
+				&.active, &:hover {
+          color: $font-gold;
+        }
+			}
+		}
+	}
+}
