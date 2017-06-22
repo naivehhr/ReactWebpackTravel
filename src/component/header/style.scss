@@ -2,14 +2,21 @@
 
 .top-container {
 	background: $jet-black;
-	height: 40px;
+	// height: 40px;
 	
+
 	.top-inner {
 		height: 100%;
 		width: 60%;
 		margin: 0px auto;
-		line-height: 40px;
+		line-height: 40px;	
 
+		&:after {
+			content: " ";
+			display: block;
+			clear: both;
+		}
+		
 		.top-inner-left {
 			height: 100%;
 			float: left;
@@ -20,6 +27,7 @@
 		}
 		.top-inner-right {
 			float: right;
+			
 			a {
 				text-decoration: none!important;
 				color: $font-gray;
