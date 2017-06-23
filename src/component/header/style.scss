@@ -1,21 +1,14 @@
-@import '../../sass/variate';
+@import '../../sass/fae';
 
 .top-container {
 	background: $jet-black;
-	// height: 40px;
-	
 
 	.top-inner {
+		@extend .clearfix;
 		height: 100%;
-		width: 60%;
+		width: 1170px;
 		margin: 0px auto;
 		line-height: 40px;	
-
-		&:after {
-			content: " ";
-			display: block;
-			clear: both;
-		}
 		
 		.top-inner-left {
 			height: 100%;
@@ -34,6 +27,65 @@
 				&.active, &:hover {
           color: $font-gold;
         }
+			}
+		}
+	}
+}
+
+.top-container-menu {
+	height: 100px;
+	
+	.top-menu-inner {
+		width: 1170px;
+		margin: 0px auto;
+
+		.top-menu-inner-left {
+			float: left;
+			.logo {
+				height: 50px;
+				margin-top: 20px;
+			}
+		}
+
+		.top-menu-inner-right {
+			width: 700px;
+			float: right;
+			line-height: 100px;	
+
+			ul {
+				list-style:none;
+				
+				li {
+					float: left;
+					font-size: 14px;
+					margin: auto auto auto 50px;
+					&:first-child {
+						margin-left: 10px;
+					}
+
+					a {
+						padding: 8px 20px;
+						background: $gray;
+						border-radius: 2px;
+						color: $gray-font-color;
+
+						&:hover, &.active{
+							background: $font-gold;
+							color: $jet-black;
+						}
+					}
+				}
+			}
+
+			.right-image {
+				float: right;
+				box-sizing: border-box;
+				height: 100px;
+				padding-top: 10px;
+
+				img {
+					width: 35px;
+				}
 			}
 		}
 	}

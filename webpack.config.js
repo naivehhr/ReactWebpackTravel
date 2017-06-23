@@ -21,14 +21,23 @@ module.exports = {
 		})
   ],
   module: {
-    loaders: [{
-      test: /\.js$/,
-      loaders: ['react-hot', 'babel'],
-      exclude: /node_modules/
-    }, {
-      test: /\.scss$/,
-      loaders: ['style', 'css', 'sass'],
-      exclude: /node_modules/
-    }]
+    loaders: [
+      {
+        test: /\.js$/,
+        loaders: ['react-hot', 'babel'],
+        exclude: /node_modules/
+      }, {
+        test: /\.scss$/,
+        loaders: ['style', 'css', 'sass'],
+        exclude: /node_modules/
+      }, {
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        loader: 'url-loader?limit=10000',
+        exclude: /node_modules/
+      }, {
+        test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, 
+        loader: "file-loader"
+      }
+    ]
   }
 };
