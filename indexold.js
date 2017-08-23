@@ -4,6 +4,7 @@ class W {
     this.name = name
   }
   
+  
   // sayHello = () => {
   //   let c = '123'
   //   console.log('hello', this.name)
