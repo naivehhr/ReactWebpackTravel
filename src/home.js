@@ -4,7 +4,6 @@ import HeaderTop from './component/header/headerTop'
 import Header from './component/header/header'
 export default class App extends Component {
   componentDidMount() {
-    
   }
   render() {
     return (
